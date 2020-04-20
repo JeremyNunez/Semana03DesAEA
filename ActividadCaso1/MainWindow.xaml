@@ -1,0 +1,108 @@
+﻿<Window x:Class="ActividadCaso1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Sistema de negocios - Tecsup" Height="670" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+    </Window.Resources>
+    <Border Padding="10">
+        <Grid Loaded="Grid_Loaded" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+                    <Label Content="Lista de los años de pedido"/>
+                    <ComboBox x:Name="cboAnioPedido"  SelectionChanged="cboAnioPedido_SelectionChanged" Loaded="cboAnioPedido_Loaded">
+                    </ComboBox>
+                    <Label Content="Lista de los meses de pedido"/>
+                    <ComboBox x:Name="cboMesPedido" SelectionChanged="cboMesPedido_SelectionChanged">
+                    </ComboBox>
+                    <Label Content="Empleados"/>
+                    <ComboBox x:Name="cboEmpleado" SelectionChanged="cboEmpleado_SelectionChanged">
+                    </ComboBox>
+                    <Button Content="Mostrar lista" Margin="0 15" Click="btnMostrarLista"></Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                
+                <StackPanel Margin="10">
+                    
+                    <Label Content="Clientes"/>
+                    <DataGrid Height="130px" x:Name="dgvClientes"
+                          AutoGenerateColumns="True" GridLinesVisibility="Vertical"
+                          HeadersVisibility="All" Background="LightCyan"
+                          RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                              IsReadOnly="True"
+                          BorderBrush="Gray" BorderThickness="5" SelectionChanged="dgvClientes_SelectionChanged">
+                    </DataGrid>
+
+                    <Label Content="Pedidos"/>
+                    <DataGrid Height="130px" x:Name="dgvPedido"
+                          AutoGenerateColumns="True" GridLinesVisibility="Vertical"
+                          HeadersVisibility="All" Background="LightCyan"
+                          RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                              IsReadOnly="True" SelectionChanged="dgvPedido_SelectionChanged" 
+                              BorderBrush="Gray" BorderThickness="5" >
+
+                    </DataGrid>
+
+                    <DockPanel>
+                        <TextBlock TextAlignment="Right" Margin="0 5">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Nro de Pedidos"/>
+                                
+                            <TextBox x:Name="txtNroPedidos" IsReadOnly="True"
+                                     Width="100" Height="20"/>
+                            </StackPanel>
+                        </TextBlock>
+                    </DockPanel>
+
+                    <Label Content="Detalles del pedido"/>
+                    <DataGrid Height="130px" x:Name="dgvDetallePedido"
+                          AutoGenerateColumns="True" GridLinesVisibility="Vertical"
+                          HeadersVisibility="All" Background="LightCyan"
+                              IsReadOnly="True"
+                          RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                          BorderBrush="Gray" BorderThickness="5" >
+
+                    </DataGrid>
+
+                    
+                    <StackPanel Margin="0 10">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Cantidad total de Productos:"/>
+                            <TextBox x:Name="txtTotalProductos" 
+                                     IsReadOnly="True" Width="100" Height="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Monto total:"/>
+                            <TextBox x:Name="txtMontoTotal" IsReadOnly="True"
+                                     Width="100" Height="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>
